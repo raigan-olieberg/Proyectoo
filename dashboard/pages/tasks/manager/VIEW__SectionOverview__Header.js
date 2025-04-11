@@ -14,56 +14,32 @@ import GlobalComponentSearch from '../../../components/Global/Search.js';
 import AppContext from '../../../helpers/AppContext';
 // Page styles
 import globalStyles from '../../../styles/global.module.scss';
-/*
-*
-*
-* 
-* 
-    REF:VIEW__SectionHeader
-    WHAT IS IT: 
-        The generated view for the header section
-*
-*
-* 
-* 
-*/
+
+
 const VIEW__SectionOverview__Header = (props) => {
     const appContext = useContext(AppContext);
     const [showAlgoliaSearchResults, setShowAlgoliaSearchResults] = useState(false);
     const [algoliaSearchObject, setAlgoliaSearchObject] = useState([]);
     const [searchInputValue, setSearchInputValue] = useState('');
-
+    /*
+    *
+    *
+    * 
+    * 
+        Content
+    *
+    *
+    * 
+    * 
+    */
     return(
         <div className={globalStyles['content-body-with-header__header']}>
             <div className={cn([
                 globalStyles['header-top-tasks-overview'],
                 globalStyles['global-margin-top']
             ])}>
-                {/*<div className={cn([
-                    globalStyles['global-display-flex'],
-                    globalStyles['global-grid-gap-column']
-                ])}>
-                    <div className={cn([
-                        globalStyles['global-select__with-icon'],
-                        globalStyles['global-select__with-border']
-                    ])}>
-                        {props.currentView == "overview" && <i className={globalStyles['global-button__icon']} dangerouslySetInnerHTML={{__html: featherIcon.icons['list'].toSvg({height: "1vw", with: "1vw"})}}></i>}
-                        {props.currentView == "analytics" && <i className={globalStyles['global-button__icon']} dangerouslySetInnerHTML={{__html: featherIcon.icons['pie-chart'].toSvg({height: "1vw", with: "1vw"})}}></i>}
-                        <select className={cn([
-                                globalStyles['global-select__standard'],
-                                globalStyles['global-transition-duration']
-                            ])}
-                            value={props.currentView}
-                            onChange={e => {FUNC__ChangeCurrentView(
-                                props.currentView,
-                                props.setCurrentView
-                            )}}>
-                            <option value="overview">Taken</option>
-                            <option value="phases">Fases</option>
-                            <option value="analytics">Statistieken</option>
-                        </select>
-                    </div>
-                </div>*/}
+
+                {/* Search */}
                 <div className={globalStyles['header-top-with-selectfilter-and-searchfilter']}>
                     <div className={globalStyles['global-select__with-icon']}>
                         <i className={globalStyles['global-button__icon']} dangerouslySetInnerHTML={{__html: featherIcon.icons['search'].toSvg({height: "1vw", with: "1vw"})}}></i>
@@ -99,6 +75,8 @@ const VIEW__SectionOverview__Header = (props) => {
                         searchFilterActive={props.searchFilterActive}
                         setSearchFilterActive={props.setSearchFilterActive}/>
                 </div>
+
+                {/* Filter */}
                 <div className={ globalStyles['global-display-flex-end']}>
                     <div className={globalStyles['global-select-with-sort-and-button__left']}>
                         <div>
@@ -169,6 +147,8 @@ const VIEW__SectionOverview__Header = (props) => {
                     </div>
                 </div>
             </div>
+
+            {/* Column header */}
             <div className={globalStyles['header-bottom']}>
                 <div className={cn([
                     globalStyles['global-column-header'],

@@ -22,9 +22,7 @@ import globalStyles from '../../../styles/global.module.scss';
 *
 * 
 * 
-    REF:VIEW__SectionHeader
-    WHAT IS IT: 
-        The generated view for the header section
+    Content
 *
 *
 * 

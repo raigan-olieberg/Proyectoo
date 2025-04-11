@@ -43,7 +43,7 @@ export const FUNC__GetProblems = async (
     );
     console.log(result);
     if(result.response == 'successfull'){
-        if(result.message.problems != null){
+        if(result.message.problems){
             setProblemsObject(result.message.problems);
         } else {
             setProblemsObject([]);
@@ -88,7 +88,7 @@ export const FUNC__LoadMoreProblemsData = async (
         }
     );
     if(result.response == 'successfull'){
-        if(result.message.problems != null){
+        if(result.message.problems){
             const newProblemsObject = [...problemsObject];
             result.message.problems.map(item => (
                 newProblemsObject.push(item)
@@ -146,13 +146,6 @@ export const FUNC__ChangeCurrentView = (
     setCurrentView
 ) => {
     setCurrentView(currentView == 'overview' ? 'analytics' : 'overview');
-}
-
-export const FUNC__ShowOrOpenAnalyticsGraph = (
-    showAnalyticsGraph,
-    setShowAnalyticsGraph
-) => {
-    setShowAnalyticsGraph(showAnalyticsGraph ? false : true);
 }
 
 export const FUNC__ChangeOverviewSortFilter = async (

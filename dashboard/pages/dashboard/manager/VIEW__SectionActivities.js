@@ -20,10 +20,13 @@ const VIEW__Activities = (props) => {
             globalStyles['dashboardview__right'],
             globalStyles['dashboardview-content-with-subheader']
         ])}>
+            {/* Header */}
             <div className={globalStyles['dashboardview-content__header']}>
                 <i className={globalStyles['global-button__icon']} dangerouslySetInnerHTML={{__html: featherIcon.icons['bell'].toSvg({height: '1vw', width: '1vw'})}}></i>
                 Activiteiten van vandaag
             </div>
+
+            {/* Subheader */}
             {
                 props.activitiesObjectHasLoaded
                 && props.activitiesObject != null
@@ -62,6 +65,8 @@ const VIEW__Activities = (props) => {
                     </div>
                 </div>
             }
+
+            {/* Content */}
             <div className={globalStyles['dashboardview-content__content']}>
                 {
                     props.activitiesObjectHasLoaded
@@ -129,6 +134,8 @@ const VIEW__Activities = (props) => {
                         ))}
                     </div>    
                 }
+
+                {/* Empty message */}
                 {
                     props.activitiesObjectHasLoaded
                     && props.activitiesObject == null
@@ -138,6 +145,8 @@ const VIEW__Activities = (props) => {
                         message={"Hier komen realtime updates van activiteiten en acties binnen jouw workspace."}/>
                 }
             </div>
+
+            {/* Loader */}
             {
                 !props.activitiesObjectHasLoaded
                 &&

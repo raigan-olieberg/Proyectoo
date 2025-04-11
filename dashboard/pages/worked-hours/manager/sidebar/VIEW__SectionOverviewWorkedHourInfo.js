@@ -27,45 +27,9 @@ import {
 } from '../../../../helpers/GlobalFunctions';
 // Page styles
 import globalStyles from '../../../../styles/global.module.scss';
-/*
-*
-*
-* 
-* 
-    REF:SIDEBAR__VIEW__SectionAddUser
-    WHAT IS IT: 
-        The generated view for the content section
-*
-*
-* 
-* 
-*/
+
+
 const WorkedHoursManagerSidebar__VIEW__SectionOverviewWorkedHourInfo = (props) => {
-    /* ========================================
-    ===========================================
-    ===========================================
-    ===========================================
-    ===========================================
-
-        References
-
-    ===========================================
-    ===========================================
-    ===========================================
-    ===========================================
-    =========================================== 
-
-        VIEWS
-            -> REF:VIEW__SectionHeader
-            -> REF:VIEW__SectionContent
-            -> REF:generated view
-        FUNCTIONS
-            -> REF:FUNC__FetchProjects
-            -> REF:GLOBALFUNC__ReturnProjectStatus
-        VARS
-            -> REF:States, contexts and searchparams
-
-    */
     const appContext = useContext(AppContext);
     const [dataIsLoading, setDataIsLoading] = useState(false);
     const [showSubmitButton, setShowSubmitButton] = useState(false);
@@ -119,9 +83,7 @@ const WorkedHoursManagerSidebar__VIEW__SectionOverviewWorkedHourInfo = (props) =
     *
     * 
     * 
-        REF:generated view
-        WHAT IS IT: 
-            The generated view for this page
+        Content
     *
     *
     * 
@@ -129,6 +91,7 @@ const WorkedHoursManagerSidebar__VIEW__SectionOverviewWorkedHourInfo = (props) =
     */
     return(
         <div className={globalStyles['content-inner__bodysection']}>
+            {/* Fields */}
             {
                 !showRejectionField
                 &&
@@ -236,6 +199,8 @@ const WorkedHoursManagerSidebar__VIEW__SectionOverviewWorkedHourInfo = (props) =
                     </div>
                 </>
             }
+
+            {/* Rejection field */}
             {
                 showRejectionField
                 &&
@@ -266,6 +231,8 @@ const WorkedHoursManagerSidebar__VIEW__SectionOverviewWorkedHourInfo = (props) =
                     ])}>{itemObject.rejection_reason}</div>
                 </div>
             }
+
+            {/* Error messages */}
             {
                 error.show
                 && error.id == 'API_ERROR'
@@ -279,6 +246,8 @@ const WorkedHoursManagerSidebar__VIEW__SectionOverviewWorkedHourInfo = (props) =
                     {error.message}
                 </div>
             }
+
+            {/* Submit buttons */}
             {
                 !dataIsLoading
                 && !deleteDialog.show
@@ -452,6 +421,8 @@ const WorkedHoursManagerSidebar__VIEW__SectionOverviewWorkedHourInfo = (props) =
                     }
                 </div>
             }
+
+            {/* Loader */}
             {
                 dataIsLoading
                 &&
@@ -462,23 +433,8 @@ const WorkedHoursManagerSidebar__VIEW__SectionOverviewWorkedHourInfo = (props) =
                     <GlobalComponentLoadingData type={"loadMore"} />
                 </div>
             }
-            {/*
-                deleteDialog.show
-                &&
-                <SidebarComponentDialogConfirmDelete 
-                    message={"deze gewerkte uren"}
-                    deleteDialog={deleteDialog}
-                    setDeleteDialog={setDeleteDialog}
-                    setDataIsLoading={setDataIsLoading}
-                    appContext={appContext}
-                    params={[
-                        itemObject,
-                        props.data.resourcesWorkedHoursObject,
-                        props.data.setResourcesWorkedHoursObject,
-                        setError
-                    ]}
-                    FUNC__DeleteObject={FUNC__DeleteObject}/>
-            */}
+
+            {/* Update status confirm dialog */}
             {
                 confirmDialog.show
                 &&

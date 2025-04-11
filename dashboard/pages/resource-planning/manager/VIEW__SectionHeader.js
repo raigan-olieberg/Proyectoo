@@ -25,19 +25,8 @@ import {
 } from '../../../helpers/GlobalFunctions';
 // Page styles
 import globalStyles from '../../../styles/global.module.scss';
-/*
-*
-*
-* 
-* 
-    REF:VIEW__SectionHeader
-    WHAT IS IT: 
-        The generated view for the section Header
-*
-*
-* 
-* 
-*/
+
+
 const VIEW__SectionHeader = (props) => {
      /*
     *

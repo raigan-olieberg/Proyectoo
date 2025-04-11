@@ -14,6 +14,7 @@ import globalStyles from '../../../styles/global.module.scss';
 const VIEW__SectionOverview = (props) => {
     return(
         <div className={globalStyles['content-body-with-header__body']}>
+            {/* Content */}
             {
                 props.dataHasLoaded
                 && props.customersObject.length > 0
@@ -62,6 +63,8 @@ const VIEW__SectionOverview = (props) => {
                     </button>
                 ))
             }
+
+            {/* Empty message */}
             {
                 props.dataHasLoaded
                 && props.customersObject.length == 0
@@ -69,12 +72,16 @@ const VIEW__SectionOverview = (props) => {
                 <GlobalComponentDynamicMessage
                     showTitle={true}/>
             }
+
+            {/* Loader */}
             {
                 !props.dataHasLoaded
                 &&
                 <GlobalComponentLoadingData
                     type={'firstTimeLoading'}/>
             }
+
+            {/* Load more customers */}
             {
                 props.dataHasLoaded
                 && !props.loadingMoreData

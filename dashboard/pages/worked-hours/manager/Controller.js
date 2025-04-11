@@ -62,7 +62,7 @@ export const FUNC__GetResourcesWorkedHours = async (
     );
     console.log(result);
     if(result.response == 'successfull'){
-        if(result.message.items != null){
+        if(result.message.items){
             setResourcesWorkedHoursObject(result.message.items);
         } else {
             setResourcesWorkedHoursObject([]);
@@ -80,17 +80,17 @@ export const FUNC__GetResourcesWorkedHours = async (
 export const FUNC__LoadMoreResourcesWorkedHoursData = async (
     params
 ) => {
-    const setLoadingMoreData = params[0] != undefined ? params[0] : null;
-    const organization_id = params[1] != undefined ? params[1] : null;
-    const resourcesWorkedHoursObject = params[2] != undefined ? params[2] : null;
-    const setResourcesWorkedHoursObject = params[3] != undefined ? params[3] : null;
-    const keyFilter = params[4] != undefined ? params[4] : null;
-    const currentYear = params[5] != undefined ? params[5] : null;
-    const overviewSortFilter = params[6] != undefined ? params[6] : null;
-    const lastVisible = params[7] != undefined ? params[7] : null;
-    const setLastVisible = params[8] != undefined ? params[8] : null;
-    const manager_id = params[9] != undefined ? params[9] : null;
-    const loggedin_user_role = params[10] != undefined ? params[10] : null;
+    const setLoadingMoreData = params[0] ? params[0] : null;
+    const organization_id = params[1] ? params[1] : null;
+    const resourcesWorkedHoursObject = params[2] ? params[2] : null;
+    const setResourcesWorkedHoursObject = params[3] ? params[3] : null;
+    const keyFilter = params[4] ? params[4] : null;
+    const currentYear = params[5] ? params[5] : null;
+    const overviewSortFilter = params[6] ? params[6] : null;
+    const lastVisible = params[7] ? params[7] : null;
+    const setLastVisible = params[8] ? params[8] : null;
+    const manager_id = params[9] ? params[9] : null;
+    const loggedin_user_role = params[10] ? params[10] : null;
     
     setLoadingMoreData(true);
 
@@ -112,7 +112,7 @@ export const FUNC__LoadMoreResourcesWorkedHoursData = async (
         }
     );
     if(result.response == 'successfull'){
-        if(result.message.items != null){
+        if(result.message.items){
             const newResourcesWorkedhoursObject = [...resourcesWorkedHoursObject];
             result.message.items.map(item => (
                 newResourcesWorkedhoursObject.push(item)
@@ -233,7 +233,7 @@ export const FUNC__GetResourcesWorkedHoursAnalytics = async (
     );
     console.log(result);
     if(result.response == 'successfull'){
-        if(result.message != null){
+        if(result.message){
             if(result.message.resources != undefined){
                 setResourcesWorkedHoursAnalyticsObject(result.message.resources);
             } else {
@@ -258,15 +258,15 @@ export const FUNC__GetResourcesWorkedHoursAnalytics = async (
 export const FUNC__LoadMoreResourcesWorkedHoursAnalyticsData = async (
     params
 ) => {
-    const setLoadingMoreData = params[0] != undefined ? params[0] : null;
-    const organization_id = params[1] != undefined ? params[1] : null;
-    const resourcesWorkedHoursAnalyticsObject = params[2] != undefined ? params[2] : null;
-    const setResourcesWorkedHoursAnalyticsObject = params[3] != undefined ? params[3] : null;
-    const currentYear = params[4] != undefined ? params[4] : null;
-    const lastVisible = params[5] != undefined ? params[5] : null;
-    const setLastVisible = params[6] != undefined ? params[6] : null;
-    const manager_id = params[7] != undefined ? params[7] : null;
-    const loggedin_user_role = params[10] != undefined ? params[10] : null;
+    const setLoadingMoreData = params[0] ? params[0] : null;
+    const organization_id = params[1] ? params[1] : null;
+    const resourcesWorkedHoursAnalyticsObject = params[2] ? params[2] : null;
+    const setResourcesWorkedHoursAnalyticsObject = params[3] ? params[3] : null;
+    const currentYear = params[4] ? params[4] : null;
+    const lastVisible = params[5] ? params[5] : null;
+    const setLastVisible = params[6] ? params[6] : null;
+    const manager_id = params[7] ? params[7] : null;
+    const loggedin_user_role = params[10] ? params[10] : null;
 
     setLoadingMoreData(true);
 
@@ -287,7 +287,7 @@ export const FUNC__LoadMoreResourcesWorkedHoursAnalyticsData = async (
         }
     );
     if(result.response == 'successfull'){
-        if(result.message.resources != null){
+        if(result.message.resources){
             const newResourcesWorkedHoursAnalyticsObject = [...resourcesWorkedHoursAnalyticsObject];
             result.message.resources.map(item => (
                 newResourcesWorkedHoursAnalyticsObject.push(item)
@@ -310,7 +310,7 @@ export const FUNC__FilterResourceAnalytics = (
 ) => {
     let value = 0;
     if(analytics != undefined
-        && analytics != null){
+        && analytics){
         if(analytics[type] != undefined){
             value =+ analytics[type];
         }

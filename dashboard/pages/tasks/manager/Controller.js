@@ -46,7 +46,7 @@ export const FUNC__GetTasks = async (
     );
     console.log(result);
     if(result.response == 'successfull'){
-        if(result.message.tasks != null){
+        if(result.message.tasks){
             setTasksObject(result.message.tasks);
         } else {
             setTasksObject([]);
@@ -93,7 +93,7 @@ export const FUNC__LoadMoreTasksData = async (
         }
     );
     if(result.response == 'successfull'){
-        if(result.message.tasks != null){
+        if(result.message.tasks){
             const newTasksObject = [...tasksObject];
             result.message.tasks.map(item => (
                 newTasksObject.push(item)

@@ -13,31 +13,31 @@ import GlobalComponentSearch from '../../../components/Global/Search.js';
 import AppContext from '../../../helpers/AppContext';
 // Page styles
 import globalStyles from '../../../styles/global.module.scss';
-/*
-*
-*
-* 
-* 
-    REF:VIEW__SectionHeader
-    WHAT IS IT: 
-        The generated view for the header section
-*
-*
-* 
-* 
-*/
+
+
 const VIEW__SectionOverview__Header = (props) => {
     const appContext = useContext(AppContext);
     const [showAlgoliaSearchResults, setShowAlgoliaSearchResults] = useState(false);
     const [algoliaSearchObject, setAlgoliaSearchObject] = useState([]);
     const [searchInputValue, setSearchInputValue] = useState('');
-
+    /*
+    *
+    *
+    * 
+    * 
+        Content
+    *
+    *
+    * 
+    * 
+    */
     return(
         <div className={globalStyles['content-body-with-header__header']}>
             <div className={cn([
                 globalStyles['header-top-resources'],
                 globalStyles['global-margin-top']
             ])}>
+                {/* Search */}
                 <GlobalComponentSearch
                     searchInputValue={searchInputValue}
                     setSearchInputValue={setSearchInputValue}
@@ -54,6 +54,8 @@ const VIEW__SectionOverview__Header = (props) => {
                     emptyMessage={'gebruikers'}
                     searchPlaceholder={'Zoek resource...'}
                     searchFilterActive={''}/>
+
+                {/* Filter */}
                 <div className={cn([
                     globalStyles['global-select-with-sort-and-button'],
                     globalStyles['global-grid-gap-column']
@@ -148,6 +150,8 @@ const VIEW__SectionOverview__Header = (props) => {
                     }
                 </div>
             </div>
+
+            {/* Column header */}
             <div className={globalStyles['header-bottom']}>
                 <div className={cn({
                     [globalStyles['global-column-header']]:true,

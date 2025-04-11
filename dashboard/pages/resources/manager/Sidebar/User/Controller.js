@@ -77,7 +77,7 @@ export const FUNC__CreateObject__SendObjectToServer = async (
 
         GLOBALFUNC__CloseSidebar(appContext, false);
 
-        if(actionAfterSuccess != null){
+        if(actionAfterSuccess){
             actionAfterSuccess();
         }
     } else if(result.response == 'unsuccessfull'){
@@ -124,10 +124,10 @@ export const FUNC__UpdateUserStatus = async (
     appContext = null,
     params = null,
 ) => {
-    let itemObject = params != null && params[0] != undefined ? params[0] : null;
-    let resourcesObject = params != null && params[1] != undefined ? params[1] : null;
-    let setResourcesObject = params != null && params[2] != undefined ? params[2] : null;
-    let setError = params != null && params[3] != undefined ? params[3] : null;
+    let itemObject = params && params[0] ? params[0] : null;
+    let resourcesObject = params && params[1] ? params[1] : null;
+    let setResourcesObject = params && params[2] ? params[2] : null;
+    let setError = params && params[3] ? params[3] : null;
 
     if(action == "showDialog"){
         setConfirmDialog({
@@ -354,7 +354,7 @@ export const FUNC__GetAdminsAndManagers = async (
         }
     );
     if(result.response == 'successfull'){
-        if(result.message != null){
+        if(result.message){
             setAdminsAndManagersObject(result.message);
             setAdminsOnlyObject(
                 result.message.filter(x => x.role === 'Admin')
@@ -415,11 +415,11 @@ export const FUNC__FetchResourceFromServer = async (
         }
     );
     if(result.response == 'successfull'){
-        if(result.message.user != null){
+        if(result.message.user){
             setItemObject(result.message.user);
             setOldItemObject({...result.message.user});
         }
-        if(result.message.adminsAndManagers != null){
+        if(result.message.adminsAndManagers){
             setAdminsAndManagersObject(result.message.adminsAndManagers);
             setAdminsOnlyObject(
                 result.message.adminsAndManagers.filter(x => x.role === 'Admin')

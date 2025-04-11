@@ -4,48 +4,19 @@ import { useState } from 'react';
 // Global / Page / Layout components
 import GlobalComponentLoadingData from '../../../components/Global/Loaders/LoadingData';
 import GlobalComponentDynamicMessage from '../../../components/Global/Alerts/DynamicMessage';
-import { GlobalComponentAsignedResources } from '../../../components/Global/Resources/AsignedResources';
-import {
-    GLOBALFUNC__SelectItemForSidebar
-} from '../../../helpers/GlobalFunctions';
 import VIEW__SectionDayview from './VIEW__SectionDayview';
 // Page styles
 import globalStyles from '../../../styles/global.module.scss';
-/*
-*
-*
-* 
-* 
-    REF:VIEW__SectionWeekview
-    WHAT IS IT: 
-        The generated view for the section Weekview (NL -> Week)
-*
-*
-* 
-* 
-*/
+
+
 const VIEW__SectionWeekview = (props) => {
-    console.log(props.weekviewDataHasLoaded);
-    /*
-    *
-    *
-    * 
-    * 
-        REF:States, contexts and searchparams
-    *
-    *
-    * 
-    * 
-    */
     const [moreDataIsLoading, setMoreDataIsLoading] = useState(false);
     /*
     *
     *
     * 
     * 
-        REF:generated view
-        WHAT IS IT: 
-            The generated view for this page
+        Content
     *
     *
     * 

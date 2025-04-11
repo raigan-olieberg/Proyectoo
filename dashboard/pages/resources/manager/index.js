@@ -14,39 +14,12 @@ import {
 } from './Controller.js';
 import VIEW__SectionOverview__Header from './VIEW__SectionOverview__Header.js';
 import VIEW__SectionOverview from './VIEW__SectionOverview.js';
-import VIEW__SectionLeaveOfAbsence__Header from './VIEW__SectionLeaveOfAbsence__Header.js';
 import PopupComponentConfirm from '../../../components/Global/Sidebar/Popup/Confirm.js';
 // Page styles
 import globalStyles from '../../../styles/global.module.scss';
 
 
 const Index = () => {
-    /* ========================================
-    ===========================================
-    ===========================================
-    ===========================================
-    ===========================================
-
-        References
-
-    ===========================================
-    ===========================================
-    ===========================================
-    ===========================================
-    =========================================== 
-    
-        VIEWS
-            -> REF:VIEW__SectionTasks
-            -> REF:VIEW__ProjectsAndTasks
-            -> REF:VIEW__Problems
-            -> REF:VIEW__Activities
-            -> REF:generated view
-        FUNCTIONS
-            -> REF:FUNC__SelectItemForSidebar
-            -> REF:FUNC__ActivityType
-            -> REF:FUNC__ActivityBody
-
-    */
     const appContext = useContext(AppContext);
     const searchParams = useSearchParams();
     const router = useRouter();
@@ -65,7 +38,7 @@ const Index = () => {
     });
     useEffect(() => {
         let oldLastVisible = overviewLastVisible;
-        if(overviewLastVisible != null){
+        if(overviewLastVisible){
             setOverviewLastVisible(null);
             oldLastVisible = null;
         }
@@ -120,9 +93,7 @@ const Index = () => {
     *
     * 
     * 
-        REF:generated view
-        -> WHAT IS IT / WHAT DOES IT DO: 
-            ---> The generated view for this page
+        Content
     *
     *
     * 
@@ -137,11 +108,14 @@ const Index = () => {
                         globalStyles['global-border-radius'],
                         globalStyles['content-body-with-header']
                     ])}>
+                        {/* Header */}
                         <VIEW__SectionOverview__Header 
                             resourcesObject={resourcesObject}
                             setResourcesObject={setResourcesObject}
                             keyFilter={overviewKeyFilter}
                             setKeyFilter={setOverviewKeyFilter}/>
+
+                        {/* Content */}
                         <VIEW__SectionOverview 
                             resourcesObject={resourcesObject}
                             setResourcesObject={setResourcesObject}

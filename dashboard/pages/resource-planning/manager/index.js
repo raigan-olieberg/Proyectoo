@@ -95,9 +95,7 @@ const Index = () => {
     *
     * 
     * 
-        REF:generated view
-        WHAT IS IT: 
-            The generated view for this page
+        Content
     *
     *
     * 
@@ -111,6 +109,7 @@ const Index = () => {
                     globalStyles['global-border-radius'],
                     globalStyles['content-body-with-header']
                 ])}>
+                    {/* Header */}
                     <div className={cn([
                         globalStyles['content-body-with-header__header'],
                         globalStyles['global-margin-top']
@@ -130,6 +129,8 @@ const Index = () => {
                                 setWeekviewDate={setWeekviewDate}/>
                         </div>
                     </div>
+
+                    {/* Content */}
                     <div className={globalStyles['content-body-with-header__body']}>
                         <div className={globalStyles['global-schedule']}>
                             { 

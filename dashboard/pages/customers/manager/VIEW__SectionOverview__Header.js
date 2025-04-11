@@ -11,6 +11,9 @@ import globalStyles from '../../../styles/global.module.scss';
 const VIEW__SectionOverview__Header = (props) => {
     return(
         <div className={globalStyles['content-body-with-header__header']}>
+            {/* 
+                TODO -> Replace 'global-search' with GlobalComponentSearch -> Copy from tasks/manager/VIEW__SectionOverview__Header.js
+            */}
             <div className={cn([
                 globalStyles['header-top-with-viewfilter-and-inputfilter-and-searchfilter'],
                 globalStyles['global-margin-top']
@@ -42,6 +45,8 @@ const VIEW__SectionOverview__Header = (props) => {
                     </button>
                 </div>
             </div>
+
+            {/* Column header */}
             <div className={globalStyles['header-bottom']}>
                 <div className={cn([
                     globalStyles['global-column-header'],

@@ -12,53 +12,15 @@ import { GlobalComponentLoadMoreButton } from '../../../components/Global/Loader
 import GlobalComponentLoadingData from '../../../components/Global/Loaders/LoadingData';
 // Page styles
 import globalStyles from '../../../styles/global.module.scss';
-/*
-*
-*
-* 
-* 
-    REF:VIEW__SectionContent
-    WHAT IS IT: 
-        The generated view for the content section
-*
-*
-* 
-* 
-*/
+
+
 const VIEW__SectionAnalytics = (props) => {
-    /* ========================================
-    ===========================================
-    ===========================================
-    ===========================================
-    ===========================================
-
-        References
-
-    ===========================================
-    ===========================================
-    ===========================================
-    ===========================================
-    =========================================== 
-
-        VIEWS
-            -> REF:VIEW__SectionHeader
-            -> REF:VIEW__SectionContent
-            -> REF:generated view
-        FUNCTIONS
-            -> REF:FUNC__FetchProjects
-            -> REF:GLOBALFUNC__ReturnProjectStatus
-        VARS
-            -> REF:States, contexts and searchparams
-
-    */
     /*
     *
     *
     * 
     * 
-        REF:generated view
-        WHAT IS IT: 
-            The generated view for this page
+        Content
     *
     *
     * 

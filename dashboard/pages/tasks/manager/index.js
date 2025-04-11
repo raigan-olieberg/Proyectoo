@@ -19,32 +19,6 @@ import globalStyles from '../../../styles/global.module.scss';;
 
 
 const Index = () => {
-    /* ========================================
-    ===========================================
-    ===========================================
-    ===========================================
-    ===========================================
-
-        References
-
-    ===========================================
-    ===========================================
-    ===========================================
-    ===========================================
-    =========================================== 
-    
-        VIEWS
-            -> REF:VIEW__SectionTasks
-            -> REF:VIEW__ProjectsAndTasks
-            -> REF:VIEW__Problems
-            -> REF:VIEW__Activities
-            -> REF:generated view
-        FUNCTIONS
-            -> REF:FUNC__SelectItemForSidebar
-            -> REF:FUNC__ActivityType
-            -> REF:FUNC__ActivityBody
-
-    */
     const appContext = useContext(AppContext);
     const searchParams = useSearchParams();
     const sortFilterkey = searchParams.get('filterkey');
@@ -120,45 +94,12 @@ const Index = () => {
             }
         }
     },[inView]);
-    /*useEffect(() => {
-        if(overviewDataHasLoaded){
-            setOverviewDataHasLoaded(false);
-        }
-        let oldLastVisible = lastVisible;
-        if(lastVisible != null){
-            setLastVisible(null);
-            oldLastVisible = null;
-        }
-        if(sortFilterkey != null
-            && sortFiltervalue != null){
-            setOverviewSortFilter({
-                key: sortFilterkey,
-                value: sortFiltervalue
-            });
-            FUNC__GetTasks(
-                appContext.globalContext.authenticate.user.organization_id,
-                setTasksObject,
-                setOverviewDataHasLoaded,
-                {
-                    key: sortFilterkey,
-                    value: sortFiltervalue
-                },
-                oldLastVisible,
-                setLastVisible,
-                appContext.globalContext.authenticate.user.user_id,
-                appContext.globalContext.authenticate.user.role
-            );
-            router.replace('', undefined, { shallow: true });
-        }
-    },[searchParams]);*/
     /*
     *
     *
     * 
     * 
-        REF:generated view
-        -> WHAT IS IT / WHAT DOES IT DO: 
-            ---> The generated view for this page
+        Content
     *
     *
     * 
@@ -173,6 +114,7 @@ const Index = () => {
                         globalStyles['global-border-radius'],
                         globalStyles['content-body-with-header']
                     ])}>
+                        {/* Header */}
                         <VIEW__SectionOverview__Header
                             appContext={appContext}
                             overviewSortFilter={overviewSortFilter}
@@ -184,6 +126,8 @@ const Index = () => {
                             setSearchFilterActive={setSearchFilterActive}
                             searchingFor={searchingFor}
                             setSearchingFor={setSearchingFor}/>
+
+                        {/* Content */}
                         <VIEW__SectionOverview
                             tasksObject={tasksObject}
                             setTasksObject={setTasksObject}

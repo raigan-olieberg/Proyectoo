@@ -40,8 +40,8 @@ const CustomersManagerSidebar__VIEW__SectionAddCustomer = (props) => {
     useEffect(() => {
         let value = false;
         if(!GLOBALFUNC__isWhitespaceString(itemObject.name)
-        && !GLOBALFUNC__isWhitespaceString(itemObject.contactperson)
-        && GLOBALFUNC__ValidateEmail(itemObject.email)){
+            && !GLOBALFUNC__isWhitespaceString(itemObject.contactperson)
+            && GLOBALFUNC__ValidateEmail(itemObject.email)){
             value = true;
         } else {
             value = false;
@@ -64,6 +64,7 @@ const CustomersManagerSidebar__VIEW__SectionAddCustomer = (props) => {
     */
     return(
         <div className={globalStyles['content-inner__bodysection']}>
+            {/* Fields */}
             <SidebarComponentFieldsInputText
                 firstItem={true} 
                 title={"Naam"} 
@@ -116,7 +117,8 @@ const CustomersManagerSidebar__VIEW__SectionAddCustomer = (props) => {
                 FUNC__CreateObject={FUNC__CreateObject}
                 itemObject={itemObject}
                 setItemObject={setItemObject}/>
-                    
+
+            {/* Error messages */}        
             {
                 error.show
                 && error.id == 'API_ERROR'
@@ -130,6 +132,8 @@ const CustomersManagerSidebar__VIEW__SectionAddCustomer = (props) => {
                     {error.message}
                 </div>
             }
+
+            {/* Submit buttons */}
             {
                 !dataIsLoading
                 &&
@@ -210,6 +214,8 @@ const CustomersManagerSidebar__VIEW__SectionAddCustomer = (props) => {
                     }
                 </div>
             }
+
+            {/* Loader */}
             {
                 dataIsLoading
                 &&

@@ -59,12 +59,12 @@ export const FUNC__LoadMoreCustomers = async (
     params
 ) => {
     console.log(params);
-    const setLoadingMoreData = params[0] != undefined ? params[0] : null;
-    const organization_id = params[1] != undefined ? params[1] : null;
-    const customersObject = params[2] != undefined ? params[2] : null;
-    const setCustomersObject = params[3] != undefined ? params[3] : null;
-    const lastVisible = params[4] != undefined ? params[4] : null;
-    const setLastVisible = params[5] != undefined ? params[5] : null;
+    const setLoadingMoreData = params[0] ? params[0] : null;
+    const organization_id = params[1] ? params[1] : null;
+    const customersObject = params[2] ? params[2] : null;
+    const setCustomersObject = params[3] ? params[3] : null;
+    const lastVisible = params[4] ? params[4] : null;
+    const setLastVisible = params[5] ? params[5] : null;
     
     setLoadingMoreData(true);
 

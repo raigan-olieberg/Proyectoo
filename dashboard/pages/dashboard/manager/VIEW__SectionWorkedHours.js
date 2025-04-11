@@ -15,15 +15,19 @@ const VIEW__SectionWorkedHours = (props) => {
             globalStyles['top-left'],
             globalStyles['dashboardview-content']
         ])}>
+            {/* Header */}
             <div className={globalStyles['dashboardview-content__header']}>
                 <i className={globalStyles['global-button__icon']} dangerouslySetInnerHTML={{__html: featherIcon.icons['clock'].toSvg({height: '1vw', width: '1vw'})}}></i>
                 Gewerkte uren
             </div>
+
+            {/* Content */}
             <div className={globalStyles['dashboardview-content__content']}>
                 <div className={cn([
                     globalStyles['content-wrapper'],
                     globalStyles['content-wrapper__workedhours']
                 ])}>
+                    {/* Workedhours this month */}
                     <Link href="../worked-hours/manager?month=current-month" className={globalStyles['workedhours-item']}>
                         <div className={globalStyles['single-chart']}>
                             <svg viewBox="0 0 36 36" className={cn([
@@ -49,7 +53,11 @@ const VIEW__SectionWorkedHours = (props) => {
                         </div>
                         <div className={globalStyles['workedhours-item']}>{props.workedhoursObject.month}</div>
                     </Link>
+
+                    {/* Seperator */}
                     <div className={globalStyles['global-seperator__horizontal']}></div>
+
+                    {/* Workedhours this week */}
                     <Link href="../worked-hours/manager?week=current-week" className={globalStyles['workedhours-item']}>
                         <div className={globalStyles['single-chart']}>
                             <svg viewBox="0 0 36 36" className={cn([

@@ -25,6 +25,7 @@ const VIEW__SectionOverview__Header = (props) => {
                 globalStyles['header-top-problems-overview'],
                 globalStyles['global-margin-top']
             ])}>
+                {/* Search */}
                 <div className={globalStyles['header-top-with-selectfilter-and-searchfilter']}>
                     <div className={globalStyles['global-select__with-icon']}>
                         <i className={globalStyles['global-button__icon']} dangerouslySetInnerHTML={{__html: featherIcon.icons['search'].toSvg({height: "1vw", with: "1vw"})}}></i>
@@ -59,6 +60,8 @@ const VIEW__SectionOverview__Header = (props) => {
                         searchFilterActive={props.searchFilterActive}
                         setSearchFilterActive={props.setSearchFilterActive}/>
                 </div>
+
+                {/* Filter */}
                 <div className={ globalStyles['global-display-flex-end']}>
                     <div className={globalStyles['global-select-with-sort-and-button__left']}>
                         <div>
@@ -120,6 +123,8 @@ const VIEW__SectionOverview__Header = (props) => {
                     </div>
                 </div>
             </div>
+
+            {/* Column header */}
             <div className={globalStyles['header-bottom']}>
                 <div className={cn([
                     globalStyles['global-column-header'],

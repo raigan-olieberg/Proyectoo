@@ -18,34 +18,11 @@ import PopupComponentConfirm from '../../../components/Global/Sidebar/Popup/Conf
 // Page styles
 import globalStyles from '../../../styles/global.module.scss';;
 
+/*
+    TODO -> Remove everything related to analytics
+*/
 
 const Index = () => {
-    /* ========================================
-    ===========================================
-    ===========================================
-    ===========================================
-    ===========================================
-
-        References
-
-    ===========================================
-    ===========================================
-    ===========================================
-    ===========================================
-    =========================================== 
-    
-        VIEWS
-            -> REF:VIEW__SectionTasks
-            -> REF:VIEW__ProjectsAndTasks
-            -> REF:VIEW__Problems
-            -> REF:VIEW__Activities
-            -> REF:generated view
-        FUNCTIONS
-            -> REF:FUNC__SelectItemForSidebar
-            -> REF:FUNC__ActivityType
-            -> REF:FUNC__ActivityBody
-
-    */
     const appContext = useContext(AppContext);
     const searchParams = useSearchParams();
     const router = useRouter();
@@ -75,7 +52,7 @@ const Index = () => {
             setDataHasLoaded(false);
         }
         let oldLastVisible = lastVisible;
-        if(lastVisible != null){
+        if(lastVisible){
             setLastVisible(null);
             oldLastVisible = null;
         }
@@ -112,12 +89,11 @@ const Index = () => {
             setDataHasLoaded(false);
         }
         let oldLastVisible = lastVisible;
-        if(lastVisible != null){
+        if(lastVisible){
             setLastVisible(null);
             oldLastVisible = null;
         }
-        if(sortFilterkey != null
-            && sortFiltervalue != null){
+        if(sortFilterkey && sortFiltervalue){
             setCurrentView('overview');
             setOverviewSortFilter({
                 key: sortFilterkey,
@@ -146,9 +122,7 @@ const Index = () => {
     *
     * 
     * 
-        REF:generated view
-        -> WHAT IS IT / WHAT DOES IT DO: 
-            ---> The generated view for this page
+        Content
     *
     *
     * 
@@ -167,6 +141,7 @@ const Index = () => {
                             currentView == 'overview'
                             &&
                             <>
+                                {/* Header */}
                                 <VIEW__SectionOverview__Header
                                     currentView={currentView}
                                     setCurrentView={setCurrentView}
@@ -176,6 +151,8 @@ const Index = () => {
                                     overviewSortFilter={overviewSortFilter}
                                     setOverviewSortFilter={setOverviewSortFilter}
                                     dataHasLoaded={dataHasLoaded}/>
+
+                                {/* Content */}
                                 <VIEW__SectionOverview
                                     currentView={currentView}
                                     setCurrentView={setCurrentView}

@@ -73,10 +73,13 @@ const Index = () => {
                         globalStyles['global-border-radius'],
                         globalStyles['content-body-with-header']
                     ])}>
+                        {/* Header */}
                         <VIEW__SectionOverview__Header 
                             customersObject={customersObject}
                             setCustomersObject={setCustomersObject}
                             appContext={appContext}/>
+
+                        {/* Content */}
                         <VIEW__SectionOverview 
                             customersObject={customersObject}
                             setCustomersObject={setCustomersObject}

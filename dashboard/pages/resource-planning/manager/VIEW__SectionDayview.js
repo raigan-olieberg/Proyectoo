@@ -3,7 +3,6 @@ import cn from 'classnames';
 import { useState, useRef, createRef } from 'react';
 import { motion } from "framer-motion";
 // Global / Page / Layout components
-import { GlobalComponentLoadMoreButton } from '../../../components/Global/Loaders/LoadMoreButton';
 import GlobalComponentLoadingData from '../../../components/Global/Loaders/LoadingData';
 import GlobalComponentEmptyMessage from '../../../components/Global/Alerts/EmptyMessage';
 import { AsignedResourcesComponentInsideList } from '../../../components/Global/Resources/AsignedResources';
@@ -17,55 +16,9 @@ import {
 } from './Controller';
 // Page styles
 import globalStyles from '../../../styles/global.module.scss';
-/*
-*
-*
-* 
-* 
-    REF:VIEW__SectionDayview
-    WHAT IS IT: 
-        The generated view for the section Dayview (NL -> Dag)
-*
-*
-* 
-* 
-*/
+
+
 const VIEW__SectionDayview = (props) => {
-    /* ========================================
-    ===========================================
-    ===========================================
-    ===========================================
-    ===========================================
-
-        References
-
-    ===========================================
-    ===========================================
-    ===========================================
-    ===========================================
-    =========================================== 
-
-        VIEWS
-            -> REF:generated view
-        FUNCTIONS
-            -> REF:FUNC__SetSidebarDirection
-            -> REF:FUNC__CalculateWidth
-            -> REF:FUNC__CalculateItemMargin
-        VARS
-            -> REF:States, contexts and searchparams
-
-    */
-    /*
-    *
-    *
-    * 
-    * 
-        REF:States, contexts and searchparams
-    *
-    *
-    * 
-    * 
-    */
     const [moreDataIsLoading, setMoreDataIsLoading] = useState(false);
     const elementsRef = useRef(props.dayviewObject.map(() => createRef()));
     /*
@@ -138,8 +91,18 @@ const VIEW__SectionDayview = (props) => {
         let endtimeNum = 24 * 3600 + 0 * 60 + 0;
         return `${(100 * starttimeNum / endtimeNum).toFixed(2)}%`;
     };
-
-    const handleDrag = (
+    /*
+    *
+    *
+    * 
+    * 
+        TODO -> Drag & expand planning item
+    *
+    *
+    * 
+    * 
+    */
+    const FUNC__HandleDrag = (
         event, info
     ) => {
         //console.log(elementsRef.current[0]);
@@ -150,7 +113,7 @@ const VIEW__SectionDayview = (props) => {
         //console.log(event.srcElement);
         //console.log(info);
     }
-    const handleDragEnd = (
+    const FUNC__HandleDragEnd = (
         event, info
     ) => {
         /*console.log(elementsRef.current[0].current.offsetWidth);
@@ -167,9 +130,7 @@ const VIEW__SectionDayview = (props) => {
     *
     * 
     * 
-        REF:generated view
-        WHAT IS IT: 
-            The generated view for this page
+        Content
     *
     *
     * 
@@ -182,6 +143,7 @@ const VIEW__SectionDayview = (props) => {
                 && props.dayviewObject.length > 0
                 &&
                 props.dayviewObject.map((item, index) => (
+                    /* Normal item */
                     FUNC__CalculateWidth(item.starttime, item.endtime) > 14
                     &&
                     <div ref={elementsRef.current[index]} key={item.planning_id} className={cn([
@@ -191,8 +153,8 @@ const VIEW__SectionDayview = (props) => {
                     ])}>
                         <motion.div
                             drag="x"
-                            onDrag={handleDrag}
-                            onDragEnd={handleDragEnd}
+                            onDrag={FUNC__HandleDrag}
+                            onDragEnd={FUNC__HandleDragEnd}
                             dragElastic={0}
                             dragMomentum={false}
                             dragConstraints={elementsRef.current[index]} className={cn({
@@ -252,6 +214,8 @@ const VIEW__SectionDayview = (props) => {
                         </motion.div>
                     </div>
                     ||
+
+                    /* Items that are too small, are shown as dots*/
                     <div key={item.planning_id} className={cn([
                         globalStyles['day-item'],
                         globalStyles['global-margin-top']
@@ -327,6 +291,8 @@ const VIEW__SectionDayview = (props) => {
                     <GlobalComponentLoadMoreButton />
                 </div>
             */}
+
+            {/* Loaders */}
             {
                 !props.dayViewDataHasLoaded
                 &&
@@ -343,6 +309,7 @@ const VIEW__SectionDayview = (props) => {
                 </div>
             }
 
+            {/* Empty message */}
             {
                 props.dayviewObject.items_total == 0
                 &&

@@ -93,6 +93,7 @@ const Index = () => {
                         globalStyles['global-border-radius'],
                         globalStyles['content-body-with-header']
                     ])}>
+                        {/* Header */}
                         <VIEW__SectionOverview__Header
                             appContext={appContext}
                             overviewSortFilter={overviewSortFilter}
@@ -104,6 +105,8 @@ const Index = () => {
                             setSearchFilterActive={setSearchFilterActive}
                             searchingFor={searchingFor}
                             setSearchingFor={setSearchingFor}/>
+
+                        {/* Content */}
                         <VIEW__SectionOverview
                             problemsObject={problemsObject}
                             setProblemsObject={setProblemsObject}

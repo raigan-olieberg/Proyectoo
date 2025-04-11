@@ -35,7 +35,7 @@ export const FUNC__GetDayviewResourcePlanning = async (
     );
     console.log(result);
     if(result.response == 'successfull'){
-        if(result.message.planning != null){
+        if(result.message.planning){
             setDayviewObject(result.message.planning);
         } else {
             setDayviewObject([]);
@@ -80,7 +80,7 @@ export const FUNC__GetWeekviewResourcePlanning = async (
     );
     console.log(result);
     if(result.response == 'successfull'){
-        if(result.message.planning != null){
+        if(result.message.planning){
             FUNC__GroupWeekviewObject(
                 weekviewObject,
                 setWeekviewObject,
@@ -130,7 +130,7 @@ export const FUNC__LoadMoreWeekviewResourcePlanning = async (
     );
     console.log(result);
     if(result.response == 'successfull'){
-        if(result.message.planning != null){
+        if(result.message.planning){
             FUNC__GroupWeekviewObject(
                 weekviewObject,
                 setWeekviewObject,
@@ -175,7 +175,7 @@ const FUNC__GroupWeekviewObject = (
         }
     });
     setWeekviewObject(newWeekviewObject); 
-    if(setLoadmoreWeekviewData != null){ 
+    if(setLoadmoreWeekviewData){ 
         setLoadmoreWeekviewData(false);  
     }
 }

@@ -461,7 +461,7 @@ export const FUNC__EditObject__SendObjectToServer = async (
 
     // Update cached object and close the sidebar
     if(success){
-        if(setTasksObject != null){
+        if(setTasksObject){
             GLOBALFUNC__EditObjectInArray(
                 'task_id',
                 itemObject.task_id,
@@ -522,10 +522,10 @@ export const FUNC__DeleteObject = async (
     appContext = null,
     params = null
 ) => {
-    let itemObject = params != null && params[0] != undefined ? params[0] : null;
-    let tasksObject = params != null && params[1] != undefined ? params[1] : null;
-    let setTasksObject = params != null && params[2] != undefined ? params[2] : null;
-    let setError = params != null && params[3] != undefined ? params[3] : null;
+    let itemObject = params && params[0] ? params[0] : null;
+    let tasksObject = params && params[1] ? params[1] : null;
+    let setTasksObject = params && params[2] ? params[2] : null;
+    let setError = params && params[3] ? params[3] : null;
 
     if(action == "showDialog"){
         setDeleteDialog({
@@ -545,7 +545,7 @@ export const FUNC__DeleteObject = async (
                 }
             );
             if(result.response == 'successfull'){
-                if(setTasksObject != null){
+                if(setTasksObject){
                     GLOBALFUNC__EditObjectInArray(
                         'task_id',
                         itemObject.task_id,
@@ -580,11 +580,11 @@ export const FUNC__UpdateTaskStatus = async (
     appContext = null,
     params = null,
 ) => {
-    const itemObject = params != null && params[0] != undefined ? params[0] : null;
-    const tasksObject = params != null && params[1] != undefined ? params[1] : null;
-    const setTasksObject = params != null && params[2] != undefined ? params[2] : null;
-    const setError = params != null && params[3] != undefined ? params[3] : null;
-    const user_id = params != null && params[4] != undefined ? params[4] : null;
+    const itemObject = params && params[0] ? params[0] : null;
+    const tasksObject = params && params[1] ? params[1] : null;
+    const setTasksObject = params && params[2] ? params[2] : null;
+    const setError = params && params[3] ? params[3] : null;
+    const user_id = params && params[4] ? params[4] : null;
 
     console.log(itemObject);
 
@@ -844,7 +844,7 @@ export const FUNC__FetchTaskFromServer = async (
             || loggedin_user_role == 'Admin'){
             setHasAccess(true);
         }
-        if(result.message != null){
+        if(result.message){
             setItemObject(FUNC__FormattedItem(result.message));
             setOldItemObject(FUNC__FormattedItem({...result.message}));
             setItemObjectFiles(result.message.files);

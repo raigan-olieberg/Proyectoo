@@ -21,17 +21,17 @@ Lopend. Het is ongeveer 30% voltooid.
 
 ## De tech stack die ik hiervoor heb gebruikt / wil gaan gebruiken
 
-**Webapp:** Next.Js, JavaScript
+**Webapp:** Next.Js, JavaScript, Sass
 
-**Mobiele app:** Angular, Ionic, Capacitor, TypeScript
+**Mobiele app:** Angular, Ionic, Capacitor, TypeScript, Sass
 
 **Backend:** Node.js, JavaScript, Firebase, FireStore (NoSQL), Algolia
 
 **Unit testing:** Jest
 
 **Versie beheer:** Bitbucket en Jira
-## Looptijd
-Ongeveer 3 maanden. Begin februari dit jaar ben ik met de ontwikkeling van dit project begonnen.
+## Doorlooptijd
+Ik ben eind 2024 begonnen met de ontwikkeling van dit project.
 
 Ik werk +/- 3 uurtjes per week aan dit project.
 ## Toekomstplannen
@@ -47,6 +47,7 @@ Zoals eerder aangegeven heb ik maar +/- 3 uurtjes per week om hieraan te werken.
 
 In de nabije toekomst zal ik de ontwikkeling pauzeren om dit aan te pakken. Denk hierbij aan dingen zoals:
 
+- Betere error afhandeling (via o.a. optional chaining)
 - Betere toepassing van commentaar
 - Betere benaming van functies
 - Verwijderen van ongebruikte code
@@ -70,7 +71,7 @@ Webapp:
 
 **Taal**
 
-Sinds het begin van mijn programmeercarrière heb ik de gewoonte ontwikkeld om in het engels te programmeren. Vandaar dat vrijwel alles in het engels is.
+Sinds het begin van mijn programmeercarrière heb ik de gewoonte ontwikkeld om, binnen mijn eigen projecten, in het engels te programmeren. Vandaar dat vrijwel alles in het engels is.
 ## Screenshots
 
 ![Dashboard](dashboard/public/img/dashboard.png)

@@ -20,45 +20,9 @@ import {
 } from '../../../../../helpers/GlobalFunctions';
 // Page styles
 import globalStyles from '../../../../../styles/global.module.scss';
-/*
-*
-*
-* 
-* 
-    REF:SIDEBAR__VIEW__SectionAddUser
-    WHAT IS IT: 
-        The generated view for the content section
-*
-*
-* 
-* 
-*/
+
+
 const ResourcesManagerSidebar__VIEW__SectionAddUser = (props) => {
-    /* ========================================
-    ===========================================
-    ===========================================
-    ===========================================
-    ===========================================
-
-        References
-
-    ===========================================
-    ===========================================
-    ===========================================
-    ===========================================
-    =========================================== 
-
-        VIEWS
-            -> REF:VIEW__SectionHeader
-            -> REF:VIEW__SectionContent
-            -> REF:generated view
-        FUNCTIONS
-            -> REF:FUNC__FetchProjects
-            -> REF:GLOBALFUNC__ReturnProjectStatus
-        VARS
-            -> REF:States, contexts and searchparams
-
-    */
     const appContext = useContext(AppContext);
     const router = useRouter();
     const [dataIsLoading, setDataIsLoading] = useState(false);
@@ -132,9 +96,7 @@ const ResourcesManagerSidebar__VIEW__SectionAddUser = (props) => {
     *
     * 
     * 
-        REF:generated view
-        WHAT IS IT: 
-            The generated view for this page
+        Content
     *
     *
     * 
@@ -142,6 +104,7 @@ const ResourcesManagerSidebar__VIEW__SectionAddUser = (props) => {
     */
     return(
         <div className={globalStyles['content-inner__bodysection']}>
+            {/* Fields */}
             {
                 dataHasLoaded
                 &&
@@ -348,6 +311,8 @@ const ResourcesManagerSidebar__VIEW__SectionAddUser = (props) => {
                         setItemObject={setItemObject}/>
                 </>
             }
+
+            {/* Error messages */}
             {
                 error.show
                 && error.id == 'API_ERROR'
@@ -361,6 +326,8 @@ const ResourcesManagerSidebar__VIEW__SectionAddUser = (props) => {
                     {error.message}
                 </div>
             }
+
+            {/* Submit buttons */}
             {
                 !dataIsLoading
                 && dataHasLoaded
@@ -444,6 +411,8 @@ const ResourcesManagerSidebar__VIEW__SectionAddUser = (props) => {
                     }
                 </div>
             }
+
+            {/* Loaders */}
             {
                 !dataHasLoaded
                 &&

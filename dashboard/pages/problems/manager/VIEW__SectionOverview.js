@@ -30,6 +30,7 @@ const VIEW__SectionOverview = (props) => {
     */
     return(
         <div className={globalStyles['content-body-with-header__body']}>
+            {/* Content */}
             {
                 props.dataHasLoaded
                 && props.problemsObject.length > 0
@@ -113,6 +114,8 @@ const VIEW__SectionOverview = (props) => {
                     </button>
                 ))
             }
+
+            {/* Empty message */}
             {
                 props.dataHasLoaded
                 && props.problemsObject.length == 0
@@ -121,12 +124,16 @@ const VIEW__SectionOverview = (props) => {
                     showTitle={true}
                     message={"Er zijn voor de geselecteerde filters geen gewerkte uren gevonden."}/>
             }
+
+            {/* Loader */}
             {
                 !props.dataHasLoaded
                 &&
                 <GlobalComponentLoadingData
                     type={'firstTimeLoading'}/>
             }
+
+            {/* Infinite scroll loader */}
             {
                 props.dataHasLoaded
                 && props.problemsObject.length > 0

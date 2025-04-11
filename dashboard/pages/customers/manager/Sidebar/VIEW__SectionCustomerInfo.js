@@ -42,8 +42,8 @@ const CustomersManagerSidebar__VIEW__SectionCustomerInfo = (props) => {
         let value = false;
         if(GLOBALFUNC__DifferenceBetweenObjects(itemObject, oldItemObject)){
             if(!GLOBALFUNC__isWhitespaceString(itemObject.name)
-            && !GLOBALFUNC__isWhitespaceString(itemObject.contactperson)
-            && GLOBALFUNC__ValidateEmail(itemObject.email)){
+                && !GLOBALFUNC__isWhitespaceString(itemObject.contactperson)
+                && GLOBALFUNC__ValidateEmail(itemObject.email)){
                 value = true;
             } else {
                 value = false;
@@ -66,6 +66,7 @@ const CustomersManagerSidebar__VIEW__SectionCustomerInfo = (props) => {
     */
     return(
         <div className={globalStyles['content-inner__bodysection']}>
+            {/* Fields */}
             <SidebarComponentFieldsInputText
                 firstItem={true} 
                 title={"Naam"} 
@@ -134,6 +135,8 @@ const CustomersManagerSidebar__VIEW__SectionCustomerInfo = (props) => {
                     get: editField,
                     set: setEditField
                 }}/>
+
+            {/* Error messages */}
             {
                 error.show
                 && error.id == 'API_ERROR'
@@ -147,6 +150,8 @@ const CustomersManagerSidebar__VIEW__SectionCustomerInfo = (props) => {
                     {error.message}
                 </div>
             }
+
+            {/* Submit buttons */}
             {
                 !dataIsLoading
                 && !deleteDialog.show
@@ -229,6 +234,8 @@ const CustomersManagerSidebar__VIEW__SectionCustomerInfo = (props) => {
                     }
                 </div>
             }
+
+            {/* Loader */}
             {
                 dataIsLoading
                 &&
@@ -239,6 +246,8 @@ const CustomersManagerSidebar__VIEW__SectionCustomerInfo = (props) => {
                     <GlobalComponentLoadingData type={"loadMore"} />
                 </div>
             }
+
+            {/* Confirm delete dialog */}
             {
                 deleteDialog.show
                 &&

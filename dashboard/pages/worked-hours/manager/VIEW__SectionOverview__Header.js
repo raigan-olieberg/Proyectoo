@@ -14,19 +14,8 @@ import {
  } from '../../../helpers/GlobalFunctions.js';
 // Page styles
 import globalStyles from '../../../styles/global.module.scss';
-/*
-*
-*
-* 
-* 
-    REF:VIEW__SectionHeader
-    WHAT IS IT: 
-        The generated view for the header section
-*
-*
-* 
-* 
-*/
+
+
 const VIEW__SectionOverview__Header = (props) => {
     return(
         <div className={globalStyles['content-body-with-header__header']}>

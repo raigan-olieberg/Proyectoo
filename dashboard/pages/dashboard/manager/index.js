@@ -98,7 +98,6 @@ const Index = () => {
     }); 
     const [activitiesObject, setActivitiesObject] = useState(null); 
     useEffect(() => {
-        //firebaseMessaging = getMessaging(firebase_app);
         FUNC__GetData(
             appContext.globalContext.authenticate.user.organization_id,
             GLOBALFUNC__GetUser__NAW,
@@ -143,6 +142,7 @@ const Index = () => {
                     globalStyles['global-border-radius'],
                     globalStyles['content-body-nopadding']
                 ])}>
+                    {/* Loader */}
                     {
                         (!workedhoursObjectHasLoaded
                         || !problemsObjectHasLoaded
@@ -152,6 +152,8 @@ const Index = () => {
                         <GlobalComponentLoadingData
                             type={'firstTimeLoading'}/>
                     }
+
+                    {/* Content */}
                     {
                         workedhoursObjectHasLoaded
                         && problemsObjectHasLoaded
@@ -161,6 +163,7 @@ const Index = () => {
                         <div className={globalStyles['dashboardview']}>
                             <div className={globalStyles['dashboardview__manager']}>
                                 <div className={globalStyles['manager-left']}>
+                                    {/* Workedhours & Tasks */}
                                     <div className={globalStyles['manager-left__top']}>
                                         <VIEW__SectionWorkedHours 
                                             workedhoursObject={workedhoursObject} />
@@ -169,10 +172,14 @@ const Index = () => {
                                             tasksObject={tasksObject}
                                             sidebar={appContext.globalContext.sidebar}/>
                                     </div>
+
+                                    {/* Problems */}
                                     <VIEW__SectionProblems 
                                         problemsObject={problemsObject}
                                         sidebar={appContext.globalContext.sidebar}/>
                                 </div>
+
+                                {/* Activities */}
                                 <VIEW__SectionActivities 
                                     activitiesObject={activitiesObject}
                                     sidebar={appContext.globalContext.sidebar}

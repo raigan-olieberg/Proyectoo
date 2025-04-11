@@ -52,7 +52,7 @@ export const FUNC__GetUsers = async (
         }
     );
     if(result.response == 'successfull'){
-        if(result.message.resources != null){
+        if(result.message.resources){
            setResourcesObject(result.message.resources);
         } else {
             setResourcesObject([]);
@@ -125,7 +125,7 @@ export const FUNC__LoadMoreUsers = async (
         }
     );
     if(result.response == 'successfull'){
-        if(result.message.resources != null){
+        if(result.message.resources){
             const newResourcesObject = [...resourcesObject];
             result.message.resources.map(item => (
                 newResourcesObject.push(item)

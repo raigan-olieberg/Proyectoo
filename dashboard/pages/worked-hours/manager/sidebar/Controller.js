@@ -3,15 +3,7 @@ import {
     GLOBALFUNC__POSTREQUEST,
     GLOBALFUNC__EditObjectInArray
 } from "../../../../helpers/GlobalFunctions";
-/*
-*
-*
-*
-* Edit object methods
-*
-*
-*
-*/
+
 export const FUNC__CreateObject = (
     itemObject,
     setItemObject,
@@ -83,10 +75,10 @@ export const FUNC__UpdateWorkedHourStatus = async (
     appContext = null,
     params = null,
 ) => {
-    let itemObject = params != null && params[0] != undefined ? params[0] : null;
-    let resourcesWorkedHoursObject = params != null && params[1] != undefined ? params[1] : null;
-    let setResourcesWorkedHoursObject = params != null && params[2] != undefined ? params[2] : null;
-    let setError = params != null && params[3] != undefined ? params[3] : null;
+    let itemObject = params && params[0] ? params[0] : null;
+    let resourcesWorkedHoursObject = params && params[1] ? params[1] : null;
+    let setResourcesWorkedHoursObject = params && params[2] ? params[2] : null;
+    let setError = params && params[3] ? params[3] : null;
 
     if(action == "showDialog"){
         setConfirmDialog({

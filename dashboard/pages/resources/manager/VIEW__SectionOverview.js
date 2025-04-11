@@ -15,54 +15,16 @@ import GlobalComponentLoadingData from '../../../components/Global/Loaders/Loadi
 import AppContext from '../../../helpers/AppContext';
 // Page styles
 import globalStyles from '../../../styles/global.module.scss';
-/*
-*
-*
-* 
-* 
-    REF:VIEW__SectionContent
-    WHAT IS IT: 
-        The generated view for the content section
-*
-*
-* 
-* 
-*/
+
+
 const VIEW__SectionOverview = (props) => {
     const appContext = useContext(AppContext);
-    /* ========================================
-    ===========================================
-    ===========================================
-    ===========================================
-    ===========================================
-
-        References
-
-    ===========================================
-    ===========================================
-    ===========================================
-    ===========================================
-    =========================================== 
-
-        VIEWS
-            -> REF:VIEW__SectionHeader
-            -> REF:VIEW__SectionContent
-            -> REF:generated view
-        FUNCTIONS
-            -> REF:FUNC__FetchProjects
-            -> REF:GLOBALFUNC__ReturnProjectStatus
-        VARS
-            -> REF:States, contexts and searchparams
-
-    */
     /*
     *
     *
     * 
     * 
-        REF:generated view
-        WHAT IS IT: 
-            The generated view for this page
+        Content
     *
     *
     * 
@@ -70,6 +32,7 @@ const VIEW__SectionOverview = (props) => {
     */
     return(
         <div className={globalStyles['content-body-with-header__body']}>
+            {/* Content */}
             {
                 props.dataHasLoaded
                 && props.resourcesObject.length > 0
@@ -148,6 +111,8 @@ const VIEW__SectionOverview = (props) => {
                     </button>
                 ))
             }
+
+            {/* Empty message */}
             {
                 props.dataHasLoaded
                 && props.resourcesObject.length == 0
@@ -156,6 +121,8 @@ const VIEW__SectionOverview = (props) => {
                     showTitle={true}
                     message={"Er zijn voor de geselecteerde filters geen gebruikers gevonden."}/>
             }
+
+            {/* Loaders */}
             {
                 !props.dataHasLoaded
                 &&

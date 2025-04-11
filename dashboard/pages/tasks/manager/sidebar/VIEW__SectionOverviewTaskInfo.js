@@ -45,45 +45,9 @@ import {
 import { getStorage } from "firebase/storage";
 // Page styles
 import globalStyles from '../../../../styles/global.module.scss';
-/*
-*
-*
-* 
-* 
-    REF:SIDEBAR__VIEW__SectionAddUser
-    WHAT IS IT: 
-        The generated view for the content section
-*
-*
-* 
-* 
-*/
+
+
 const TasksManagerSidebar__VIEW__SectionOverviewTaskInfo = (props) => {
-    /* ========================================
-    ===========================================
-    ===========================================
-    ===========================================
-    ===========================================
-
-        References
-
-    ===========================================
-    ===========================================
-    ===========================================
-    ===========================================
-    =========================================== 
-
-        VIEWS
-            -> REF:VIEW__SectionHeader
-            -> REF:VIEW__SectionContent
-            -> REF:generated view
-        FUNCTIONS
-            -> REF:FUNC__FetchProjects
-            -> REF:GLOBALFUNC__ReturnProjectStatus
-        VARS
-            -> REF:States, contexts and searchparams
-
-    */
     const appContext = useContext(AppContext);
     const firebaseDb = getFirestore(firebase_app);
     const firebaseStorage = getStorage(firebase_app);
@@ -195,9 +159,7 @@ const TasksManagerSidebar__VIEW__SectionOverviewTaskInfo = (props) => {
     },[inView]);
     useEffect(() => {
         let submitButtonValue = false;
-        if(itemObject != null
-            && !showStuckField
-            && !showUnStuckField){
+        if(itemObject && !showStuckField && !showUnStuckField){
             if((GLOBALFUNC__DifferenceBetweenObjects(itemObject, oldItemObject)
             || addedItemObjectFiles.length > 0
             || deletedItemObjectFiles.length > 0)){
@@ -216,8 +178,7 @@ const TasksManagerSidebar__VIEW__SectionOverviewTaskInfo = (props) => {
             setShowSubmitButton(submitButtonValue); 
         }   
 
-        if(itemObject != null
-            && showStuckField){
+        if(itemObject && showStuckField){
             if(!GLOBALFUNC__isWhitespaceString(itemObject.stuck_comment.comment)){
                 setShowStuckSubmitButton(true);
             } else {
@@ -225,8 +186,7 @@ const TasksManagerSidebar__VIEW__SectionOverviewTaskInfo = (props) => {
             }
         }
 
-        if(itemObject != null
-            && showUnStuckField){
+        if(itemObject && showUnStuckField){
             if(!GLOBALFUNC__isWhitespaceString(itemObject.stuck_comment.related_problem_solved_comment)){
                 setShowUnStuckSubmitButton(true);
             } else {
@@ -239,9 +199,7 @@ const TasksManagerSidebar__VIEW__SectionOverviewTaskInfo = (props) => {
     *
     * 
     * 
-        REF:generated view
-        WHAT IS IT: 
-            The generated view for this page
+        Content
     *
     *
     * 
@@ -259,6 +217,7 @@ const TasksManagerSidebar__VIEW__SectionOverviewTaskInfo = (props) => {
                     globalStyles['global-grid-gap']
                 ])}>
                     <div>
+                        {/* Fields */}
                         {
                             !showStuckField
                             && !showUnStuckField
@@ -441,6 +400,8 @@ const TasksManagerSidebar__VIEW__SectionOverviewTaskInfo = (props) => {
                                 }
                             </>
                         }
+
+                        {/* Task stuck field */}
                         {
                             showStuckField
                             &&
@@ -456,6 +417,8 @@ const TasksManagerSidebar__VIEW__SectionOverviewTaskInfo = (props) => {
                                 itemObject={itemObject}
                                 setItemObject={setItemObject}/> 
                         }
+
+                        {/* Task unstuck field */}
                         {
                             showUnStuckField
                             &&
@@ -471,6 +434,8 @@ const TasksManagerSidebar__VIEW__SectionOverviewTaskInfo = (props) => {
                                 itemObject={itemObject}
                                 setItemObject={setItemObject}/> 
                         }
+
+                        {/* Error messages */}
                         {
                             error.show
                             && error.id == 'API_ERROR'
@@ -484,6 +449,8 @@ const TasksManagerSidebar__VIEW__SectionOverviewTaskInfo = (props) => {
                                 {error.message}
                             </div>
                         }
+
+                        {/* Submit buttons */}
                         {
                             !dataIsLoading
                             && dataHasLoaded
@@ -823,6 +790,8 @@ const TasksManagerSidebar__VIEW__SectionOverviewTaskInfo = (props) => {
                                 }
                             </div>
                         }
+
+                        {/* Loader */}
                         {
                             dataIsLoading
                             &&
@@ -833,6 +802,8 @@ const TasksManagerSidebar__VIEW__SectionOverviewTaskInfo = (props) => {
                                 <GlobalComponentLoadingData type={"loadMore"} />
                             </div>
                         }
+
+                        {/* Confirm delete dialog */}
                         {
                             deleteDialog.show
                             &&
@@ -850,6 +821,8 @@ const TasksManagerSidebar__VIEW__SectionOverviewTaskInfo = (props) => {
                                 ]}
                                 FUNC__DeleteObject={FUNC__DeleteObject}/>
                         }
+
+                        {/* Update status confirm dialog */}
                         {
                             confirmDialog.show
                             &&
@@ -868,6 +841,8 @@ const TasksManagerSidebar__VIEW__SectionOverviewTaskInfo = (props) => {
                                 FUNC__Confirm={FUNC__UpdateTaskStatus}/>
                         }
                     </div>
+
+                    {/* Chat */}
                     {
                         itemObject.assigned_to.length > 0
                         &&
@@ -1041,6 +1016,8 @@ const TasksManagerSidebar__VIEW__SectionOverviewTaskInfo = (props) => {
                     }
                 </div>
             }
+
+            {/* Loader */}
             {
                 hasAccess
                 && (!dataHasLoaded
@@ -1049,6 +1026,8 @@ const TasksManagerSidebar__VIEW__SectionOverviewTaskInfo = (props) => {
                 <GlobalComponentLoadingData 
                     type={'firstTimeLoading'}/>
             }
+
+            {/* No access message */}
             {
                 !hasAccess
                 && (dataHasLoaded

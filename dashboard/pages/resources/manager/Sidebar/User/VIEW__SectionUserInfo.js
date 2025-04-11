@@ -31,45 +31,9 @@ import {
 } from '../../../../../helpers/GlobalFunctions';
 // Page styles
 import globalStyles from '../../../../../styles/global.module.scss';
-/*
-*
-*
-* 
-* 
-    REF:SIDEBAR__VIEW__SectionAddUser
-    WHAT IS IT: 
-        The generated view for the content section
-*
-*
-* 
-* 
-*/
+
+
 const ResourcesManagerSidebar__VIEW__SectionUserInfo = (props) => {
-    /* ========================================
-    ===========================================
-    ===========================================
-    ===========================================
-    ===========================================
-
-        References
-
-    ===========================================
-    ===========================================
-    ===========================================
-    ===========================================
-    =========================================== 
-
-        VIEWS
-            -> REF:VIEW__SectionHeader
-            -> REF:VIEW__SectionContent
-            -> REF:generated view
-        FUNCTIONS
-            -> REF:FUNC__FetchProjects
-            -> REF:GLOBALFUNC__ReturnProjectStatus
-        VARS
-            -> REF:States, contexts and searchparams
-
-    */
     const appContext = useContext(AppContext);
     const [dataIsLoading, setDataIsLoading] = useState(false);
     const [dataHasLoaded, setDataHasLoaded] = useState(false);
@@ -121,8 +85,7 @@ const ResourcesManagerSidebar__VIEW__SectionUserInfo = (props) => {
     }, []);
     useEffect(() => {
         let value = false;
-        if(itemObject != null
-            && GLOBALFUNC__DifferenceBetweenObjects(itemObject, oldItemObject)){
+        if(itemObject && GLOBALFUNC__DifferenceBetweenObjects(itemObject, oldItemObject)){
             if(!GLOBALFUNC__isWhitespaceString(itemObject.firstname)
                 && !GLOBALFUNC__isWhitespaceString(itemObject.lastname)
                 && GLOBALFUNC__ValidateEmail(itemObject.email)
@@ -139,22 +102,19 @@ const ResourcesManagerSidebar__VIEW__SectionUserInfo = (props) => {
         setShowSubmitButton(value);     
     }, [itemObject]);
     useEffect(() => {
-        if(itemObject != null
-            && GLOBALFUNC__DifferenceBetweenObjects(itemObject, oldItemObject)){
+        if(itemObject && GLOBALFUNC__DifferenceBetweenObjects(itemObject, oldItemObject)){
             setItemObject({
                 ...itemObject,
                 manager_id: appContext.globalContext.authenticate.user.user_id
             });
         }
-    }, [itemObject != null ? itemObject.role : null]);
+    }, [itemObject ? itemObject.role : null]);
     /*
     *
     *
     * 
     * 
-        REF:generated view
-        WHAT IS IT: 
-            The generated view for this page
+        Content
     *
     *
     * 
@@ -162,6 +122,7 @@ const ResourcesManagerSidebar__VIEW__SectionUserInfo = (props) => {
     */
     return(
         <div className={globalStyles['content-inner__bodysection']}>
+            {/* Fields */}
             {
                 dataHasLoaded
                 &&
@@ -437,6 +398,8 @@ const ResourcesManagerSidebar__VIEW__SectionUserInfo = (props) => {
                     </div>
                 </>
             }
+
+            {/* Error messages */}
             {
                 error.show
                 && error.id == 'API_ERROR'
@@ -450,6 +413,8 @@ const ResourcesManagerSidebar__VIEW__SectionUserInfo = (props) => {
                     {error.message}
                 </div>
             }
+
+            {/* Submit buttons */}
             {
                 !dataIsLoading
                 && dataHasLoaded
@@ -583,6 +548,8 @@ const ResourcesManagerSidebar__VIEW__SectionUserInfo = (props) => {
                     </button>  
                 </div>
             }
+
+            {/* Loaders */}
             {
                 !dataHasLoaded
                 &&
@@ -599,6 +566,8 @@ const ResourcesManagerSidebar__VIEW__SectionUserInfo = (props) => {
                     <GlobalComponentLoadingData type={"loadMore"} />
                 </div>
             }
+
+            {/* Confirm delete dialog */}
             {
                 showDeleteConfirm
                 &&
@@ -607,6 +576,8 @@ const ResourcesManagerSidebar__VIEW__SectionUserInfo = (props) => {
                     FUNC__DeleteObject={FUNC__DeleteObject}
                     setShowDeleteConfirm={setShowDeleteConfirm}/>
             }
+
+            {/* Confirm status update dialog */}
             {
                 confirmDialog.show
                 &&

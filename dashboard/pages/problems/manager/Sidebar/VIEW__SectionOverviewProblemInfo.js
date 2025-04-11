@@ -71,8 +71,7 @@ const ProblemsManagerSidebar__VIEW__SectionOverviewProblemInfo = (props) => {
     }, [fetchProblemFromServer]);
     useEffect(() => {
         let submitButtonValue = false;
-        if(itemObject != null
-            && !showResolvedField){
+        if(itemObject && !showResolvedField){
             if(GLOBALFUNC__DifferenceBetweenObjects(itemObject, oldItemObject)){
                 if(!GLOBALFUNC__isWhitespaceString(itemObject.short_description)
                     && !GLOBALFUNC__isWhitespaceString(itemObject.long_description)){
@@ -86,8 +85,7 @@ const ProblemsManagerSidebar__VIEW__SectionOverviewProblemInfo = (props) => {
             setShowSubmitButton(submitButtonValue);  
         }  
         
-        if(itemObject != null
-            && showResolvedField){
+        if(itemObject && showResolvedField){
             if(!GLOBALFUNC__isWhitespaceString(itemObject.resolved_comment.comment)){
                 setShowResolvedSubmitButton(true);
             } else {
@@ -108,6 +106,7 @@ const ProblemsManagerSidebar__VIEW__SectionOverviewProblemInfo = (props) => {
     */
     return(
         <div className={globalStyles['content-inner__bodysection']}>
+            {/* Fields */}
             {
                 dataHasLoaded
                 && !showResolvedField
@@ -254,6 +253,8 @@ const ProblemsManagerSidebar__VIEW__SectionOverviewProblemInfo = (props) => {
                     </div>
                 </>
             }
+
+            {/* Problem solved field */}
             {
                 showResolvedField
                 &&
@@ -269,6 +270,8 @@ const ProblemsManagerSidebar__VIEW__SectionOverviewProblemInfo = (props) => {
                     itemObject={itemObject}
                     setItemObject={setItemObject}/> 
             }
+
+            {/* Problem solved comment */}
             {
                 dataHasLoaded
                 && itemObject.status == 'resolved'
@@ -303,6 +306,8 @@ const ProblemsManagerSidebar__VIEW__SectionOverviewProblemInfo = (props) => {
                     </div>
                 </div>
             }
+
+            {/* Error messages */}
             {
                 error.show
                 && error.id == 'API_ERROR'
@@ -316,6 +321,8 @@ const ProblemsManagerSidebar__VIEW__SectionOverviewProblemInfo = (props) => {
                     {error.message}
                 </div>
             }
+
+            {/* Submit buttons */}
             {
                 dataHasLoaded
                 && !dataIsLoading
@@ -526,6 +533,8 @@ const ProblemsManagerSidebar__VIEW__SectionOverviewProblemInfo = (props) => {
                     }
                 </div>
             }
+
+            {/* Loaders */}
             {
                 !dataHasLoaded
                 &&
@@ -542,6 +551,8 @@ const ProblemsManagerSidebar__VIEW__SectionOverviewProblemInfo = (props) => {
                     <GlobalComponentLoadingData type={"loadMore"} />
                 </div>
             }
+
+            {/* Confirm delete dialog */}
             {
                 deleteDialog.show
                 &&
@@ -559,6 +570,8 @@ const ProblemsManagerSidebar__VIEW__SectionOverviewProblemInfo = (props) => {
                     ]}
                     FUNC__DeleteObject={FUNC__DeleteObject}/>
             }
+
+            {/* Confirm status upate dialog */}
             {
                 confirmDialog.show
                 &&
