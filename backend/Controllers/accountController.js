@@ -18,6 +18,7 @@ import {
   compareSync
 } from "bcrypt";
 import { randomBytes } from 'crypto';
+import { GLOBALFUNC__SendEmail } from '../Global/GlobalFunctions.js';
 
 const db = getFirestore(firebase);
 const saltRounds = 10;
@@ -335,106 +336,12 @@ export const resetPassword = async (req, res, next) => {
       tokenId = tokenDoc.id;
       token = `${token}.${tokenId}`;
 
-      const emailFooter = `
-        <table cellpadding="0" cellspacing="0" border="0" globalstyles="[object Object]" class="table__StyledTable-sc-1avdl6r-0 gZiJTA" style="vertical-align: -webkit-baseline-middle; font-size: medium; font-family: Arial;">
-          <tbody>
-            <tr>
-                <td color="#f86295" direction="horizontal" width="auto" height="1" class="color-divider__Divider-sc-1h38qjv-0 icFEOy" style="width: 100%; border-bottom: 1px solid rgb(248, 98, 149); border-left: none; display: block;"></td>
-            </tr>
-            <tr>
-                <td height="30"></td>
-            </tr>
-            <tr>
-                <td style="vertical-align: middle;">
-                  <table cellpadding="0" cellspacing="0" border="0" globalstyles="[object Object]" class="table__StyledTable-sc-1avdl6r-0 gZiJTA" style="vertical-align: -webkit-baseline-middle; font-size: medium; font-family: Arial;">
-                      <tbody>
-                        <tr>
-                            <td>
-                              <h2 color="#000000" class="name__NameContainer-sc-1m457h3-0 gsCpOr" style="margin: 0px; font-size: 18px; color: rgb(0, 0, 0); font-weight: 600;"><span>Klantenservice |</span><span>&nbsp;</span><span>Proyectoo</span></h2>
-                              <p color="#000000" font-size="medium" class="company-details__CompanyContainer-sc-j5pyy8-0 eYVggq" style="margin: 0px; font-weight: 500; color: rgb(0, 0, 0); font-size: 14px; line-height: 22px;"><span>Onderdeel van Partum Interactive B.V.</span></p>
-                            </td>
-                            <td width="15">
-                              <div></div>
-                            </td>
-                            <td color="#f86295" direction="vertical" width="1" height="auto" class="color-divider__Divider-sc-1h38qjv-0 icFEOy" style="width: 1px; border-bottom: none; border-left: 1px solid rgb(248, 98, 149);"></td>
-                            <td width="15">
-                              <div></div>
-                            </td>
-                            <td>
-                              <table cellpadding="0" cellspacing="0" border="0" globalstyles="[object Object]" class="table__StyledTable-sc-1avdl6r-0 gZiJTA" style="vertical-align: -webkit-baseline-middle; font-size: medium; font-family: Arial;">
-                                  <tbody>
-                                    <tr height="25" style="vertical-align: middle;">
-                                        <td width="30" style="vertical-align: middle;">
-                                          <table cellpadding="0" cellspacing="0" border="0" globalstyles="[object Object]" class="table__StyledTable-sc-1avdl6r-0 gZiJTA" style="vertical-align: -webkit-baseline-middle; font-size: medium; font-family: Arial;">
-                                              <tbody>
-                                                <tr>
-                                                    <td style="vertical-align: bottom;"><span color="#f86295" width="11" class="contact-info__IconWrapper-sc-mmkjr6-1 brbfIW" style="display: inline-block; background-color: rgb(248, 98, 149);"><img src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/phone-icon-2x.png" color="#f86295" alt="mobilePhone" width="13" class="contact-info__ContactLabelIcon-sc-mmkjr6-0 kInyhW" style="display: block; background-color: rgb(248, 98, 149);"></span></td>
-                                                </tr>
-                                              </tbody>
-                                          </table>
-                                        </td>
-                                        <td style="padding: 0px; color: rgb(0, 0, 0);"><a href="tel:085 - 06 08 127" color="#000000" class="contact-info__ExternalLink-sc-mmkjr6-2 dExxuU" style="text-decoration: none; color: rgb(0, 0, 0); font-size: 12px;"><span>085 - 06 08 127</span></a></td>
-                                    </tr>
-                                    <tr height="25" style="vertical-align: middle;">
-                                        <td width="30" style="vertical-align: middle;">
-                                          <table cellpadding="0" cellspacing="0" border="0" globalstyles="[object Object]" class="table__StyledTable-sc-1avdl6r-0 gZiJTA" style="vertical-align: -webkit-baseline-middle; font-size: medium; font-family: Arial;">
-                                              <tbody>
-                                                <tr>
-                                                    <td style="vertical-align: bottom;"><span color="#f86295" width="11" class="contact-info__IconWrapper-sc-mmkjr6-1 brbfIW" style="display: inline-block; background-color: rgb(248, 98, 149);"><img src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/email-icon-2x.png" color="#f86295" alt="emailAddress" width="13" class="contact-info__ContactLabelIcon-sc-mmkjr6-0 kInyhW" style="display: block; background-color: rgb(248, 98, 149);"></span></td>
-                                                </tr>
-                                              </tbody>
-                                          </table>
-                                        </td>
-                                        <td style="padding: 0px;"><a href="mailto:support@proyectoo.com" color="#000000" class="contact-info__ExternalLink-sc-mmkjr6-2 dExxuU" style="text-decoration: none; color: rgb(0, 0, 0); font-size: 12px;"><span>support@proyectoo.com</span></a></td>
-                                    </tr>
-                                    <tr height="25" style="vertical-align: middle;">
-                                        <td width="30" style="vertical-align: middle;">
-                                          <table cellpadding="0" cellspacing="0" border="0" globalstyles="[object Object]" class="table__StyledTable-sc-1avdl6r-0 gZiJTA" style="vertical-align: -webkit-baseline-middle; font-size: medium; font-family: Arial;">
-                                              <tbody>
-                                                <tr>
-                                                    <td style="vertical-align: bottom;"><span color="#f86295" width="11" class="contact-info__IconWrapper-sc-mmkjr6-1 brbfIW" style="display: inline-block; background-color: rgb(248, 98, 149);"><img src="https://cdn2.hubspot.net/hubfs/53/tools/email-signature-generator/icons/link-icon-2x.png" color="#f86295" alt="website" width="13" class="contact-info__ContactLabelIcon-sc-mmkjr6-0 kInyhW" style="display: block; background-color: rgb(248, 98, 149);"></span></td>
-                                                </tr>
-                                              </tbody>
-                                          </table>
-                                        </td>
-                                        <td style="padding: 0px;"><a href="https://proyectoo.com" color="#000000" class="contact-info__ExternalLink-sc-mmkjr6-2 dExxuU" style="text-decoration: none; color: rgb(0, 0, 0); font-size: 12px;"><span>https://proyectoo.com</span></a></td>
-                                    </tr>
-                                  </tbody>
-                              </table>
-                            </td>
-                        </tr>
-                      </tbody>
-                  </table>
-                </td>
-            </tr>
-            <tr>
-                <td height="30"></td>
-            </tr>
-            <tr>
-                <td color="#f86295" direction="horizontal" width="auto" height="1" class="color-divider__Divider-sc-1h38qjv-0 icFEOy" style="width: 100%; border-bottom: 1px solid rgb(248, 98, 149); border-left: none; display: block;"></td>
-            </tr>
-          </tbody>
-        </table>
-      `;
-      const emailBody = `
-        <p>Hi ${userData.firstname},</p>
-        <p>Problemen met inloggen?<br>Er is een verzoek ontvangen om jouw wachtwoord te herstellen.</p>
-        <p>Als je dit verzoek niet hebt gedaan, dan kan je deze e-mail negeren.</p>
-        <p>Mocht je dit verzoek wel hebben gedaan, klik dan op de link hieronder:</p>
-        <a href='https://app.proyectoo.com/account/set-new-password?t=${token}'>Wachtwoord herstellen</a>
-        <p>Met vriendelijke groet,</p>
-        <br><br><br>
-        ${emailFooter}
-      `;
-      const emailData = {
-        to: [req.body.email],
-        message: {
-          subject: "Wachtwoord herstellen",
-          text: "",
-          html: emailBody
-        }
-      }
-      await addDoc(collection(db, 'mail'), emailData);
+      await GLOBALFUNC__SendEmail(
+        'reset_password',
+        userData,
+        null,
+        token
+      );
     }
     
     res.status(200).send({
