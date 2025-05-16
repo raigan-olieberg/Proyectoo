@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Proyectoo
 
-First, run the development server:
+Een projectmanagement platform voor de buitendienst. Denk hierbij aan schilders, monteurs, installateurs etc. Het bestaat uit een webapp en een mobiele app.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Waarom?
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Om mijn React/Next.js vaardigheden te blijven ontwikkelen
+- Om mijn TypeScript / JavaScript vaardigheden te blijven ontwikkelen
+- Om mijn optimalisatie / edge cases vaardigheden te verbeteren
+- Om meer te leren over het toepassen van AI
+- Omdat ik een passie heb voor programmeren
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Status van het project
 
-## Learn More
+Lopend. Ik ben op vrijdag 16 mei 2025 met dit project begonnen. Mijn doel is om wekelijks een paar uurtjes te werken aan dit project.
 
-To learn more about Next.js, take a look at the following resources:
+## Kernfuncties
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Projectbeheer
+- Budgetbeheer
+- Taakbeheer
+- Inspectiebeheer
+- Probleembeheer
+- Resource planning
+- Gewerkte uren registratie
+- Klantenbeheer
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Tech stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Webapp:** Next.Js, JavaScript, TypeScript
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**Mobiele app:** React, Ionic, Capacitor, JavaScript, TypeScript
+
+**Backend:** Node.js, TypeScript, Firebase, FireStore (NoSQL), Algolia
+
+**Unit testing:** Jest
+
+**Versie beheer:** GIT
+
+
+## Toekomstplannen
+- Het implementeren van de kernfuncties binnen de frontend
+- Het implementeren van de backend
+- Unit testing
+- Logging / monitoring
+- Implementeren van AI om het inplannen van resources te automatiseren. In de toekomst kan het zijn dat ik meer AI toepassingen ga toevoegen, maar voor nu is dit het doel.
+
+
+## Overige opmerkingen
+
+**Taal**
+
+Sinds het begin van mijn programmeercarrière heb ik de gewoonte ontwikkeld om, binnen mijn eigen projecten, in het engels te programmeren. Vandaar dat vrijwel alle syntax in het engels is.
+
+
+## Screenshots
+
+Hieronder zal ik, indien mogelijk, screenshots plaatsen:
+
+
+## Updates
+
+**16-05-2025 om 15:45:** Basis structuur gedefinieerd
+
+**16-05-2025 om 16:23:** De globale custom hook "useFetch" toegevoegd (https://github.com/raigan-olieberg/Proyectoo/commit/98da79ab7f749b64796f9ba1cca97f845865a4a6)
+
